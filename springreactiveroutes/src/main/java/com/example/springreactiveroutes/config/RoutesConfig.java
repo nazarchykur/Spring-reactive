@@ -1,5 +1,6 @@
 package com.example.springreactiveroutes.config;
 
+import com.example.springreactiveroutes.handlers.ProductHandler;
 import com.example.springreactiveroutes.models.Product;
 import com.example.springreactiveroutes.services.ProductService;
 import org.springframework.context.annotation.Bean;
@@ -66,12 +67,25 @@ public class RoutesConfig {
             data:{"name":"bread"}             <= через перші 3 секунди ми отримаємо перший продукт
             data:{"name":"chocolate"}         <= через наступні 3 секунди ми отримаємо другий продукт
      */
+
+//    @Bean
+//    public RouterFunction<ServerResponse> router2 (ProductService productService){
+//        return route()
+//                .GET("/products", request -> ok()
+//                        .contentType(MediaType.TEXT_EVENT_STREAM)
+//                        .body(productService.getAll(), Product.class))
+//                .build();
+//    }
+    
+    /*
+     за допомогою потрібного Handler класу можна забрати код, який стосується запиту і просто передати силку
+     на потрібний метод хендлер класу = тут код стає читабельним і простим
+     */
     @Bean
-    public RouterFunction<ServerResponse> router2 (ProductService productService){
+    public RouterFunction<ServerResponse> router (ProductHandler productHandler){
         return route()
-                .GET("/products", request -> ok()
-                        .contentType(MediaType.TEXT_EVENT_STREAM)
-                        .body(productService.getAll(), Product.class))
+//                .GET("/products", request -> productHandler.getAll(request))  // <= lambda
+                .GET("/products", productHandler::getAll)                     // <= method reference
                 .build();
     }
     
