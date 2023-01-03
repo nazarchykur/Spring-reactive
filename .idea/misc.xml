@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/springreactive" />
+    <file type="web" url="file://$PROJECT_DIR$/springreactive6" />
     <file type="web" url="file://$PROJECT_DIR$/springreactiveroutes" />
     <file type="web" url="file://$PROJECT_DIR$/springreactiveroutes2" />
   </component>
