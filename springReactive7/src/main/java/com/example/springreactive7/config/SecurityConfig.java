@@ -68,17 +68,17 @@ public class SecurityConfig {
      */
 
     // httpBasic
-//    @Bean
-//    public SecurityWebFilterChain webFilterChain(ServerHttpSecurity http) {
-//        return http
-//                    .httpBasic()
-//                .and()
-//                    .authorizeExchange()
-//                        .pathMatchers("/demo/**").authenticated()
-//                        .anyExchange().permitAll()
-//                .and()
-//                    .build();
-//    }
+    @Bean
+    public SecurityWebFilterChain webFilterChain(ServerHttpSecurity http) {
+        return http
+                    .httpBasic()
+                .and()
+                    .authorizeExchange()
+                        .pathMatchers("/demo/**").authenticated()
+                        .anyExchange().permitAll()
+                .and()
+                    .build();
+    }
 
     /*
     User Management and Authentication
@@ -87,14 +87,14 @@ public class SecurityConfig {
         
         нариклад KeyCloak / Auth0 / Okta / ...
      */
-    @Bean
-    public SecurityWebFilterChain webFilterChain(ServerHttpSecurity http) {
-        return http
-                    .oauth2ResourceServer(oauth2 -> oauth2.jwt().jwkSetUri("http//some resource that we use as a ACCESS MANAGEMENT"))
-                    .authorizeExchange()
-                        .pathMatchers("/demo/**").authenticated()
-                        .anyExchange().permitAll()
-                .and()
-                    .build();
-    }
+//    @Bean
+//    public SecurityWebFilterChain webFilterChain(ServerHttpSecurity http) {
+//        return http
+//                    .oauth2ResourceServer(oauth2 -> oauth2.jwt().jwkSetUri("http//some resource that we use as a ACCESS MANAGEMENT"))
+//                    .authorizeExchange()
+//                        .pathMatchers("/demo/**").authenticated()
+//                        .anyExchange().permitAll()
+//                .and()
+//                    .build();
+//    }
 }
