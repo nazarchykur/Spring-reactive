@@ -12,4 +12,9 @@ public class DemoController {
     public Mono<String> demo(){
         return Mono.just("demo");
     }
+
+    @GetMapping(value = "/hello", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Mono<String> hello(){
+        return Mono.just("hello");
+    }
 }
